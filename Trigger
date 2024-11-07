@@ -17,3 +17,9 @@ END;
 //
 
 DELIMITER ;
+
+
+
+SELECT * FROM Prizes WHERE event_id = 1;
+
+SELECT * FROM Prizes WHERE event_id = 1;INSERT INTO Event (event_id, name, desc, city) VALUES (1, 'Tech Fest', 'Annual tech fest', 'New York');
