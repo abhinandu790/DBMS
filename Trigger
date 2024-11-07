@@ -20,6 +20,7 @@ DELIMITER ;
 
 
 
-SELECT * FROM Prizes WHERE event_id = 1;
 
-SELECT * FROM Prizes WHERE event_id = 1;INSERT INTO Event (event_id, name, desc, city) VALUES (1, 'Tech Fest', 'Annual tech fest', 'New York');
+INSERT INTO Event (event_id, name, description, city) VALUES (1, 'Tech Fest', 'Annual tech fest', 'New York');
+INSERT INTO Event (event_id, name, description, city) VALUES (2, 'Food Fest', 'food tech fest', 'London');
+SELECT * FROM Prizes;
