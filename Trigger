@@ -1,0 +1,6 @@
+create database tri;
+CREATE TABLE Event(event_id INT  primary key ,name VARCHAR(20),description VARCHAR(20),city VARCHAR(20));
+CREATE TABLE Participant(player_id INT primary key,name VARCHAR(20),event_id INT ,gender VARCHAR(20),year YEAR,FOREIGN KEY (event_id)REFERENCES
+Event(event_id));
+CREATE TABLE Winners(prize_id INT,player_id INT,PRIMARY KEY(prize_id,player_id),FOREIGN KEY (prize_id)REFERENCES Prizes(prize_id),FOREIGN KEY (player_id)REFERENCES Participant(player_id));
+CREATE TABLE Prizes(prize_id INT primary key,money INT,event_id INT,rankk INT,year YEAR ,FOREIGN KEY (event_id) REFERENCES Event(event_id));
