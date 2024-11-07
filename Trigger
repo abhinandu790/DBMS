@@ -10,9 +10,9 @@ CREATE TRIGGER create_prizes_for_event
 AFTER INSERT ON Event
 FOR EACH ROW
 BEGIN
-    INSERT INTO Prizes (money, event_id, rank, year) VALUES (1500, NEW.event_id, 1, YEAR(CURDATE()));
-    INSERT INTO Prizes (money, event_id, rank, year) VALUES (1000, NEW.event_id, 2, YEAR(CURDATE()));
-    INSERT INTO Prizes (money, event_id, rank, year) VALUES (500, NEW.event_id, 3, YEAR(CURDATE()));
+    INSERT INTO Prizes (money, event_id, rankk, year) VALUES (1500, NEW.event_id, 1, YEAR(CURDATE()));
+    INSERT INTO Prizes (money, event_id, rankk, year) VALUES (1000, NEW.event_id, 2, YEAR(CURDATE()));
+    INSERT INTO Prizes (money, event_id, rankk, year) VALUES (500, NEW.event_id, 3, YEAR(CURDATE()));
 END;
 //
 
