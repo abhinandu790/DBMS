@@ -4,6 +4,8 @@ CREATE TABLE Participant(player_id INT primary key,name VARCHAR(20),event_id INT
 Event(event_id));
 CREATE TABLE Winners(prize_id INT,player_id INT,PRIMARY KEY(prize_id,player_id),FOREIGN KEY (prize_id)REFERENCES Prizes(prize_id),FOREIGN KEY (player_id)REFERENCES Participant(player_id));
 CREATE TABLE Prizes(prize_id INT primary key,money INT,event_id INT,rankk INT,year YEAR ,FOREIGN KEY (event_id) REFERENCES Event(event_id));
+DELIMITER //
+
 CREATE TRIGGER create_prizes_for_event
 AFTER INSERT ON Event
 FOR EACH ROW
@@ -12,3 +14,6 @@ BEGIN
     INSERT INTO Prizes (money, event_id, rank, year) VALUES (1000, NEW.event_id, 2, YEAR(CURDATE()));
     INSERT INTO Prizes (money, event_id, rank, year) VALUES (500, NEW.event_id, 3, YEAR(CURDATE()));
 END;
+//
+
+DELIMITER ;
