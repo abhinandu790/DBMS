@@ -1,0 +1,71 @@
+
+mysql> create database tcl;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use tcl;
+Database changed
+mysql> create table employee(employee_id int primary key, employee_name varchar(20),designation varchar(20),department_no int,employee_salary int);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc employee;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| employee_id     | int         | NO   | PRI | NULL    |       |
+| employee_name   | varchar(20) | YES  |     | NULL    |       |
+| designation     | varchar(20) | YES  |     | NULL    |       |
+| department_no   | int         | YES  |     | NULL    |       |
+| employee_salary | int         | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert  into employee values(1,"Rahul","Clerk",103,1070);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert  into employee values(2,"Priya","Manager",106,13500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert  into employee values(3,"Roja","Security",101,5000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert  into employee values(4,"Abhiram","Cleaner",104,7800);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert  into employee values(5,"Arjun","Office Staff",102,9500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++-------------+---------------+--------------+---------------+-----------------+
+| employee_id | employee_name | designation  | department_no | employee_salary |
++-------------+---------------+--------------+---------------+-----------------+
+|           1 | Rahul         | Clerk        |           103 |            1070 |
+|           2 | Priya         | Manager      |           106 |           13500 |
+|           3 | Roja          | Security     |           101 |            5000 |
+|           4 | Abhiram       | Cleaner      |           104 |            7800 |
+|           5 | Arjun         | Office Staff |           102 |            9500 |
++-------------+---------------+--------------+---------------+-----------------+
+5 rows in set (0.00 sec)
+mysql> set autocommit=0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> savepoint s;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert  into employee values(6,"Gokul","Manager",106,12500);
+Query OK, 1 row affected (0.01 sec)
+
+
+
+
+
+
+mysql> rollback to s;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+
+
+
+

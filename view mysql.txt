@@ -1,0 +1,29 @@
+mysql> create database view;
+Query OK, 1 row affected (0.01 sec)
+mysql> use view;
+Database changed
+mysql> create table employee(employee_no int primary key, employee_name varchar(50),job varchar(20),department_no varchar(20),salary int);
+Query OK, 0 rows affected (0.02 sec)
+mysql> insert  into employee values(1,"Rahul","ASP",104,15000);
+Query OK, 1 row affected (0.02 sec)
+mysql> insert  into employee values(2,"Priya","Manager",109,19000);
+Query OK, 1 row affected (0.00 sec)
+mysql> insert  into employee values(3,"Roja","Sales",101,7000);
+Query OK, 1 row affected (0.00 sec)
+mysql> insert  into employee values(4,"Abhiram","ASP",104,17000);
+Query OK, 1 row affected (0.01 sec)
+mysql> insert  into employee values(5,"Arjun","Manager",109,14500);
+Query OK, 1 row affected (0.00 sec)
+mysql> create view employeeview as select employee_no,employee_name,job,department_no,salary from employee;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create view employeeverticalpartition as select employee_no,employee_name,department_no,job from employeeview;
+Query OK, 0 rows affected (0.01 sec)
+mysql> create view employeehorizontalpartition as select employee_no,employee_name,department_no,job from employeeview where job="ASP";
+Query OK, 0 rows affected (0.01 sec)
+mysql> update employee set department_no=105 where employee_no=1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+mysql> drop view employeeview;
+Query OK, 0 rows affected (0.01 sec)
+

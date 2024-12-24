@@ -1,0 +1,57 @@
+ update  works set salary = salary * 1.10 where emp_id in (select manager_id from( select manager_id from manages join works on manages.emp_id = works.emp_id where works.company_name = 'SBI');
+
+
+UPDATE works
+SET salary = salary * 1.10
+WHERE emp_id IN (
+    SELECT manager_id
+    FROM (
+        SELECT manager_id
+        FROM manages
+        JOIN works ON manages.emp_id = works.emp_id
+        WHERE works.company_name = 'SBI'
+    ) AS derived_table
+);
+
+
+
+
+
+
+
+
+UPDATE works
+SET salary = salary * 1.10
+WHERE emp_id IN (
+    SELECT manager_id
+    FROM manages
+    JOIN works ON manages.emp_id = works.emp_id
+    WHERE works.company_name = 'SBI'
+);  You can't specify target table 'works' for update in FROM clause  
+
+
+SELECT company_name, COUNT(emp_id) AS employee_count
+FROM works
+GROUP BY company_name
+ORDER BY employee_count DESC
+LIMIT 1;
+
+
+SELECT company_name
+FROM works
+GROUP BY company_name
+HAVING AVG(salary) > (
+    SELECT AVG(salary)
+    FROM works
+    WHERE company_name = 'Indian Bank'
+);
+
+
+SELECT emp_name, salary
+FROM emp
+JOIN works ON emp.emp_id = works.emp_id
+WHERE salary > ALL (
+    SELECT salary
+    FROM works
+    WHERE company_name = 'Indian Bank'
+);
